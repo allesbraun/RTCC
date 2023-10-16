@@ -3,6 +3,7 @@ from autogluon.tabular import TabularPredictor
 
 # Caminho relativo para o arquivo CSV
 path_database = 'databases/merged_database.csv'
+path_augustives = 'databases/augustives.csv'    
 
 train_data = pd.read_csv(path_database)
 train_data_efficiency = train_data.drop(['complexity', 'complexity_class'], axis=1)

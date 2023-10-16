@@ -1,4 +1,4 @@
-num_if,num_else,num_switch,num_loof,num_break,num_Priority,num_binSearch,num_minMax,num_sort,num_hash_map,num_hash_set,num_recursive,num_nasted_loop,num_vari,num_method,num_state,complexity,complexity_class,efficiency,filename
+num_if,num_else,num_switch,num_loof,num_break,num_Priority,num_binSearch,num_minMax,num_sort,num_hash_map,num_hash_set,num_recursive,num_nested_loop,num_vari,num_method,num_state,complexity,complexity_class,efficiency,filename
 0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,1,constant,efficient,1001.java
 1,1,0,1,0,0,0,0,0,0,0,0,0,3,1,5,1,constant,efficient,1100.java
 2,0,0,0,0,0,0,0,0,0,0,0,0,4,1,4,1,constant,efficient,1101.java

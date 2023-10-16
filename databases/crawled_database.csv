@@ -1,4 +1,4 @@
-num_if,num_else,num_switch,num_loof,num_break,num_Priority,num_binSearch,num_minMax,num_sort,num_hash_map,num_hash_set,num_recursive,num_nasted_loop,num_vari,num_method,num_state,complexity,complexity_class,efficiency,filename
+num_if,num_else,num_switch,num_loof,num_break,num_Priority,num_binSearch,num_minMax,num_sort,num_hash_map,num_hash_set,num_recursive,num_nested_loop,num_vari,num_method,num_state,complexity,complexity_class,efficiency,filename
 0,0,0,2,0,0,0,1,0,0,0,0,2,4,2,4,n*k,quadratic,inefficient,BinomialCoefficientDP9GeeksforGeeks-3.java
 1,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,1,constant,efficient,DetectiftwointegershaveoppositesignsGeeksforGeeks-1.java
 1,0,0,2,0,0,0,0,0,0,0,0,0,9,2,7,log n (log log n,logarithmic,efficient,RandomizedAlgorithmsSet312ApproximateMedianGeeksforGeeks-1.java
