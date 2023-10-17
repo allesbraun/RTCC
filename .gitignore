@@ -10,3 +10,5 @@ AutogluonModels/
 java_files/
 
 csv_files/
+
+.mypy_cache/
