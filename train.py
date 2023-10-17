@@ -4,10 +4,11 @@ from autogluon.tabular import TabularPredictor
 # Caminho relativo para o arquivo CSV
 path_database = 'databases/merged_database.csv'
 path_augustives = 'databases/augustives.csv'    
+path_merged = 'databases/merged_datasets.csv'
 
-train_data = pd.read_csv(path_database)
-train_data_efficiency = train_data.drop(['complexity', 'complexity_class'], axis=1)
-train_data_class = train_data.drop(['complexity'], axis=1) 
+train_data = pd.read_csv(path_merged)
+train_data_efficiency = train_data.drop(['complexity_class'], axis=1)
+train_data_class = train_data
 # train_data_both = train_data.drop(['complexity'], axis=1) 
 
 # custom_metrics_class = {'accuracy', 'precision', 'f1', 'recall'}
@@ -15,8 +16,8 @@ train_data_class = train_data.drop(['complexity'], axis=1)
 
 # predictor = TabularPredictor(label='complexity_class', eval_metric = custom_metrics_class ).fit(train_data_class,verbosity  = 4, presets=['best_quality'])
 # predictor = TabularPredictor(label='efficiency', eval_metric = custom_metrics_efficiency ).fit(train_data_efficiency,verbosity  = 4, presets=['best_quality'])
-predictor = TabularPredictor(label='efficiency').fit(train_data_efficiency, presets=['best_quality'])
-predictor = TabularPredictor(label='complexity_class').fit(train_data_class, presets=['best_quality'])
+predictor = TabularPredictor(label='efficiency').fit(train_data_efficiency, presets=['good_quality'])
+predictor = TabularPredictor(label='complexity_class').fit(train_data_class, presets=['good_quality'])
 # predictor = TabularPredictor(label=['complexity_class', 'efficiency']).fit(train_data_both,verbosity  = 4, presets=['best_quality'])
 
 #0.6909   = Validation score   (accuracy) #class primeiro
