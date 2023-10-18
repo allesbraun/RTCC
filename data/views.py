@@ -45,6 +45,7 @@ class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
             if 'file' not in request.FILES:
                 return Response({"error": "Arquivo não enviado"}, status=status.HTTP_400_BAD_REQUEST)
             # Verifica se a extensão do arquivo é .java
+            uploaded_file = request.FILES['file']
             if not uploaded_file.name.endswith('.java'):
                 return Response({'error': 'O arquivo deve ter extensão .java'}, status=status.HTTP_400_BAD_REQUEST)
             # Verifica o tamanho do arquivo
@@ -52,7 +53,6 @@ class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
             if uploaded_file.size > max_size:
                 return Response({'error': 'O arquivo é muito grande. O tamanho máximo permitido é 1MB.'}, status=status.HTTP_400_BAD_REQUEST)
             
-            uploaded_file = request.FILES['file']
             content = uploaded_file.read().decode('utf-8')
 
             # Verificar se a pasta 'java_files' já existe
