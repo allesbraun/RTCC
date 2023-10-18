@@ -2,35 +2,46 @@ import pandas as pd
 from autogluon.tabular import TabularPredictor
 
 # Caminho relativo para o arquivo CSV
-path_crawled = 'databases/crawled_database.csv'
+path_crawleds = 'databases/crawled_datasets.csv'
 path_paper = 'databases/paper_database.csv'
 
-train_crawled = pd.read_csv(path_crawled)
-train_crawled_efficiency = train_crawled.drop(
-    ['complexity', 'complexity_class'], axis=1)
-train_crawled_class = train_crawled.drop(['complexity'], axis=1)
-
-# predictor_efficiency = TabularPredictor(label='efficiency').fit(
-#     train_crawled_efficiency, presets=['best_quality'])
-# predictor_class = TabularPredictor(label='complexity_class').fit(
-#     train_crawled_class, presets=['best_quality'])
+x_test = pd.read_csv(path_crawleds)
 
 test_data = pd.read_csv(path_paper)
 test_data_efficiency = test_data.drop(
     ['complexity', 'complexity_class'], axis=1)
 test_data_class = test_data.drop(['complexity'], axis=1)
 
-predictor_efficiency = TabularPredictor.load(
-    "AutogluonModels/crawled_efficiency")
-predictor_class = TabularPredictor.load("AutogluonModels/crawled_class")
+predictor_efficiency = TabularPredictor.load("AutogluonModels/crawleds_medium_efficiency")
+predictor_class = TabularPredictor.load("AutogluonModels/crawleds_medium_complexity")
 
 # predictions_efficiency = predictor_efficiency.predict(test_data_efficiency)
 # predictions_class = predictor_class.predict(test_data_class)
 
-results_efficiency = predictor_efficiency.evaluate(test_data_efficiency)
-print(results_efficiency)
-results_class = predictor_class.evaluate(test_data_class)
-print(results_class)
+# results_efficiency = predictor_efficiency.evaluate(test_data_efficiency)
+# print(results_efficiency)
+# results_class = predictor_class.evaluate(test_data_class)
+# print(results_class)
 
-# print(predictions_efficiency)
-# print(predictions_class)
+from sklearn.metrics import (accuracy_score, classification_report,
+                             confusion_matrix, f1_score, precision_score,
+                             recall_score)
+
+
+#function to calculate the metrics of the models
+def metrics(y_test, y_pred):
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, average='weighted', zero_division=1)
+    recall = recall_score(y_test, y_pred, average='weighted', zero_division=1)
+    f1 = f1_score(y_test, y_pred, average='weighted', zero_division=1)
+
+    print('Model accuracy score: {0:0.4f}'.format(accuracy))
+    print('Model precision score: {0:0.4f}'.format(precision))
+    print('Model recall score: {0:0.4f}'.format(recall))
+    print('Model F1 score: {0:0.4f}'.format(f1))
+ 
+y_pred = predictor_class.predict(x_test)
+y_test = x_test['complexity_class']
+metrics(y_test, y_pred)
+confusion_matrix(y_test, y_pred)
+classification_report(y_test, y_pred)
