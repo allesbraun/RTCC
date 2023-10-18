@@ -1659,7 +1659,7 @@ num_if,num_else,num_switch,num_loop,num_break,num_Priority,num_binSearch,num_min
 1,0,0,1,0,0,0,0,0,0,0,0,0,3,2,5,logarithmic,efficient,write-a-c-program-to-calculate-powxn-7.java
 0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,constant,efficient,write-a-c-program-to-calculate-powxn-8.java
 1,1,0,1,0,0,0,0,0,0,0,1,0,6,3,5,exponential,inefficient,write-a-c-program-to-print-all-permutations-of-a-given-string-1.java
-7,1,0,1,0,0,0,0,0,0,0,0,0,8,4,20,efficient,efficient,write-a-program-to-add-two-numbers-in-base-14.java
+7,1,0,1,0,0,0,0,0,0,0,0,0,8,4,20,linear,efficient,write-a-program-to-add-two-numbers-in-base-14.java
 0,0,0,2,0,0,0,0,0,0,0,0,0,3,3,3,linear,efficient,write-a-program-to-reverse-an-array-or-string-1.java
 1,0,0,1,0,0,0,0,0,0,0,1,0,3,3,3,linear,efficient,write-a-program-to-reverse-an-array-or-string-2.java
 6,1,0,1,0,0,0,0,0,0,0,1,0,3,2,11,logarithmic,efficient,write-an-efficient-method-to-check-if-a-number-is-multiple-of-3-1.java
