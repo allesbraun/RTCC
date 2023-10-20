@@ -14,8 +14,8 @@ def autogluon_classifier(code_csv):
     test_data = code_csv
     # 'f1' (for binary classification), 'roc_auc' (for binary classification) TESTAR NO TREINAMENTO DA EFFICIENCY
     # predictor_efficiency = TabularPredictor.load("AutogluonModels/ag-efficiency_training", require_py_version_match=False)
-    predictor_class = TabularPredictor.load("AutogluonModels/medium_class")
-    predictor_efficiency = TabularPredictor.load("AutogluonModels/medium_efficiency")
+    predictor_class = TabularPredictor.load("AutogluonModels/fixed_merged_class")
+    predictor_efficiency = TabularPredictor.load("AutogluonModels/fixed_merged_efficiency")
 
     
     # predictor_class = TabularPredictor.load("AutogluonModels/ag-class_training", require_py_version_match=False)

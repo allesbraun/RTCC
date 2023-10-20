@@ -12,7 +12,7 @@ def data_response(content, file):
         'num_switch': count_switches(content), #Number of switch statements #OK
         'num_loop': count_loops(content), # Number of loops, including for and while statements #OK
         'num_break': count_breaks(content), # Number of break statements #OK
-        'num_priority': count_priority(content), # Number of priority queues instantiated #OK
+        'num_Priority': count_priority(content), # Number of priority queues instantiated #OK
         'num_binSearch': count_binSearch(content), # Number of calls for a binary search #
         'num_minMax': count_minMax(content), # Number data of calls for min() or max() functions #OK
         'num_sort': count_sorts(content), # Number of calls for the sort() function #OK
