@@ -1,8 +1,9 @@
 import csv
+import json
 import os
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -64,14 +65,15 @@ class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
             with open(file_path, 'wb') as file:
                 file.write(uploaded_file.read())
                 
-            # Converte a resposta em formato CSV
+            # Armazena a eficiência e a complexidade do código em um dicionário
             response_data = data_response(content, uploaded_file)
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = f'attachment; filename="{filename}.csv"'
+            result_json = json.loads(response_data)  # Converte a string JSON de volta para um dicionário Python
 
-            # Cria o objeto de escrita CSV e escreve os dados
-            writer = csv.writer(response)
-            writer.writerows(response_data)
+            efficiency = result_json['Efficiency']
+            complexity_class = result_json['Complexity class']
+
+            # Constrói a string de resposta
+            response_text = f'Efficiency: {efficiency}, Complexity class: {complexity_class}'
+
+            return HttpResponse(response_text, content_type="text/plain")
             
-            return response
-        

@@ -2,7 +2,6 @@ import pandas as pd
 from autogluon.tabular import TabularPredictor
 
 # Caminho relativo para o arquivo CSV
-path_database = 'databases/merged_database.csv'
 path_crawleds = 'databases/crawled_datasets.csv'    
 path_merged = 'databases/merged_datasets.csv'
 
