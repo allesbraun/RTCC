@@ -68,7 +68,6 @@ google-auth-oauthlib==1.0.0
 googleapis-common-protos==1.61.0
 gpustat==1.1.1
 #graphviz==0.20.1
-graphviz==2.42.2
 grpcio==1.50.0
 huggingface-hub==0.18.0
 hyperopt==0.2.7
