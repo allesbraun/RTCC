@@ -14,14 +14,46 @@ from data.models import Code
 from data.serializer import CodeSerializer
 
 
-class HomeView(APIView):
-    def get(self, request):
-        return render(request, 'home.html')
-
-
 class CodesViewSet(viewsets.ModelViewSet):
     queryset = Code.objects.all()
     serializer_class = CodeSerializer
+    def post(self, request, filename = None):
+        if request.method == 'POST':
+            if 'file' not in request.FILES:
+                return Response({"error": "Arquivo não enviado"}, status=status.HTTP_400_BAD_REQUEST)
+            # Verifica se a extensão do arquivo é .java
+            uploaded_file = request.FILES['file']
+            if not uploaded_file.name.endswith('.java'):
+                return Response({'error': 'O arquivo deve ter extensão .java'}, status=status.HTTP_400_BAD_REQUEST)
+            # Verifica o tamanho do arquivo
+            max_size = 1024 * 1024  # Tamanho máximo permitido em bytes (1 MB)
+            if uploaded_file.size > max_size:
+                return Response({'error': 'O arquivo é muito grande. O tamanho máximo permitido é 1MB.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            content = uploaded_file.read().decode('utf-8')
+
+            # Verificar se a pasta 'java_files' já existe
+            if not os.path.exists(settings.MEDIA_ROOT):
+                # Se não existir, criar a pasta
+                os.makedirs(settings.MEDIA_ROOT)
+            # Salvar o arquivo no diretório 'java_files'
+            file_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
+            with open(file_path, 'wb') as file:
+                # file.write(uploaded_file.read())
+                file.write(content.encode('utf-8'))
+                
+            # Armazena a eficiência e a complexidade do código em um dicionário
+            response_data = data_response(content, uploaded_file)
+            result_json = json.loads(response_data)  # Converte a string JSON de volta para um dicionário Python
+
+            efficiency = result_json['Efficiency']
+            complexity_class = result_json['Complexity class']
+
+            # Constrói a string de resposta
+            response_text = f'Efficiency: {efficiency}, Complexity class: {complexity_class}'
+
+            return HttpResponse(response_text, content_type="text/plain")
+            
     
     
 
