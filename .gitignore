@@ -10,5 +10,5 @@ AutogluonModels/
 java_files/
 
 csv_files/
-*.env
 .mypy_cache/
+.env
