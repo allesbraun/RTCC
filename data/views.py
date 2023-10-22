@@ -63,7 +63,8 @@ class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
             # Salvar o arquivo no diretório 'java_files'
             file_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
             with open(file_path, 'wb') as file:
-                file.write(uploaded_file.read())
+                # file.write(uploaded_file.read())
+                file.write(content.encode('utf-8'))
                 
             # Armazena a eficiência e a complexidade do código em um dicionário
             response_data = data_response(content, uploaded_file)
