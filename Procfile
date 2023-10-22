@@ -1,1 +1,1 @@
-web: gunicorn RTCC.wsgi
+web: gunicorn setup.wsgi
