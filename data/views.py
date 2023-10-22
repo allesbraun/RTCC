@@ -14,8 +14,9 @@ from data.models import Code
 from data.serializer import CodeSerializer
 
 
-def Home(request):
-    return render(request, 'home.html')
+class HomeView(APIView):
+    def get(self, request):
+        return render(request, 'home.html')
 
 
 class CodesViewSet(viewsets.ModelViewSet):
