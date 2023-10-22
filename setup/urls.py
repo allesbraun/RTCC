@@ -7,6 +7,7 @@ from data.views import CodesViewSet, HomeView, JavaFileViewSet
 
 router = routers.DefaultRouter()
 router.register('codes', CodesViewSet, basename='Codes')
+router.register('home', HomeView, basename='Home')
 
 urlpatterns = [
     path('home/', HomeView.as_view(), name='home'),
