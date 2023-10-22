@@ -12,8 +12,8 @@ def autogluon_classifier(code_csv):
     verbosity=4 # More training log. TESTAR NO TREINAMENTO, AQUI NÃO É RELEVANTE
     # eval_metrics = ['accuracy', 'precision', 'f1', 'recall'] TESTAR NO TREINAMENTO
     test_data = code_csv
-    predictor_class = TabularPredictor.load("AutogluonModels/fixed_merged_class")
-    predictor_efficiency = TabularPredictor.load("AutogluonModels/fixed_merged_efficiency")
+    predictor_class = TabularPredictor.load("deploy_class_classifier")
+    predictor_efficiency = TabularPredictor.load("deploy_efficiency_classifier")
 
     # predictor_class = TabularPredictor.load("AutogluonModels/ag-class_training", require_py_version_match=False)
     predictions_efficiency = predictor_efficiency.predict(test_data)
