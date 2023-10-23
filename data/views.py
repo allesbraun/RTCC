@@ -21,6 +21,14 @@ class CodesViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         uploaded_file = self.request.data.get('file')
+        # Verifica se a extensão do arquivo é .java
+        if not uploaded_file.name.endswith('.java'):
+                return Response({'error': 'The file must have a .java extension'}, status=status.HTTP_400_BAD_REQUEST)
+        # Verifica o tamanho do arquivo
+        max_size = 1024 * 1024  # Tamanho máximo permitido em bytes (1 MB)
+        if uploaded_file.size > max_size:
+            return Response({'error': 'The file is too big. The maximum size allowed is 1MB.'}, status=status.HTTP_400_BAD_REQUEST)
+            
         content = uploaded_file.read().decode('utf-8')
         response_data = data_response(content, uploaded_file)
         result_json = json.loads(response_data)  # Converte a string JSON de volta para um dicionário Python
