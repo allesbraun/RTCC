@@ -18,9 +18,24 @@ class CodesViewSet(viewsets.ModelViewSet):
     queryset = Code.objects.all()
     serializer_class = CodeSerializer
     
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        uploaded_file = self.request.data.get('file')
+        content = uploaded_file.read().decode('utf-8')
+        response_data = data_response(content, uploaded_file)
+        result_json = json.loads(response_data)  # Converte a string JSON de volta para um dicionário Python
+
+        efficiency = result_json['Efficiency']
+        complexity_class = result_json['Complexity class']
+        response.data['Efficiency'] = efficiency
+        response.data['Complexity class'] = complexity_class
+        return response
+        
+    
 class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
     def get(self, request, filename=None):  # Use o método 'get' ao invés de 'retrieve'
         if request.method == 'GET':
+            queryset = Code.objects.all()
             if filename is not None:
                 # Verifica se o arquivo Java existe no diretório 'java_files'
                 java_file_path = os.path.join(settings.MEDIA_ROOT, filename)
@@ -42,6 +57,8 @@ class JavaFileViewSet(APIView):  # Use a classe APIView ao invés de ViewSet
             
     def post(self, request, filename = None):
         if request.method == 'POST':
+            queryset = Code.objects.all()
+            # return render(request, 'data/templates/upload_form.html')
             if 'file' not in request.FILES:
                 return Response({"error": "Arquivo não enviado"}, status=status.HTTP_400_BAD_REQUEST)
             # Verifica se a extensão do arquivo é .java

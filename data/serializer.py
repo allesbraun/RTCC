@@ -7,5 +7,5 @@ class CodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Code
         # fields = ['id', 'file', 'title', 'code_description', 'url',]
-        fields = ['id', 'file', 'title', 'code_description',]
+        fields = ['id', 'file', 'title',]
         
