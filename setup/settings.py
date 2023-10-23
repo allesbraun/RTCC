@@ -16,8 +16,8 @@ from pathlib import Path
 import dj_database_url
 from decouple import config
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 # Adicione essa linha no topo do arquivo
 
 
