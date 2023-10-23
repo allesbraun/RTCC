@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-import dj_database_url
+# import dj_database_url
 from decouple import config
 
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -90,8 +90,7 @@ DATABASES = {
     }
 }
 
-# Configure o uso do banco de dados do Heroku
-DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+
 
 
 
