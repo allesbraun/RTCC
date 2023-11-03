@@ -15,8 +15,8 @@ train_data_class = train_data
 
 # predictor = TabularPredictor(label='complexity_class', eval_metric = custom_metrics_class ).fit(train_data_class,verbosity  = 4, presets=['best_quality'])
 # predictor = TabularPredictor(label='efficiency', eval_metric = custom_metrics_efficiency ).fit(train_data_efficiency,verbosity  = 4, presets=['best_quality'])
-predictor = TabularPredictor(label='efficiency').fit(train_data_efficiency, presets=['best_quality'])
-predictor = TabularPredictor(label='complexity_class').fit(train_data_class, presets=['best_quality'])
+predictor = TabularPredictor(label='efficiency').fit(train_data_efficiency, presets=['medium_quality', 'optimize_for_deployment'])
+predictor = TabularPredictor(label='complexity_class').fit(train_data_class, presets=['medium_quality', 'optimize_for_deployment'])
 # predictor = TabularPredictor(label=['complexity_class', 'efficiency']).fit(train_data_both,verbosity  = 4, presets=['best_quality'])
 
 #0.6909   = Validation score   (accuracy) #class primeiro
