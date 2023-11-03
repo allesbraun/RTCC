@@ -1,6 +1,5 @@
 import json
 
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -10,7 +9,7 @@ from data.models import Code
 from data.serializer import CodeSerializer
 
 
-class CodesAPIView(APIView):
+class RunningTimeComplexityCalculatorAPIView(APIView):
     queryset = Code.objects.all()
     serializer_class = CodeSerializer
     def get(self, request, format=None):
