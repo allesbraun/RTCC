@@ -34,10 +34,6 @@ def autogluon_classifier(test_data):
     # results_efficiency = predictor_efficiency.fit_summary(show_plot=True) #descomentar 
     # results_class = predictor_class.fit_summary(show_plot=True) # descomentar
     
-    # melhor_modelo1 = predictor_class.get_model_best()
-    # print(melhor_modelo1)
-    # melhor_modelo2 = predictor_efficiency.get_model_best()
-    # print(melhor_modelo2)
     
     csv_file = str(test_data['filename'])
     csv_file = csv_file.replace('.java', '.csv')

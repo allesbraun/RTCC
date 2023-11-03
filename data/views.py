@@ -31,7 +31,6 @@ class CodesAPIView(APIView):
             return Response({'error': 'The file is too big. The maximum size allowed is 1MB.'}, status=status.HTTP_400_BAD_REQUEST)
             
         content = uploaded_file.read().decode('utf-8')
-        print(f'O conteúdo do arquivo é: {content}')
         
         response_data = data_response(content, uploaded_file)
         result_json = json.loads(response_data)  # Converte a string JSON de volta para um dicionário Python
