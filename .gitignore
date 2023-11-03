@@ -7,8 +7,6 @@ __pycache__/
 
 AutogluonModels/
 
-java_files/
-
 csv_files/
 .mypy_cache/
 .env

@@ -26,7 +26,6 @@ def data_response(content, file):
         'filename': file.name, #OK
     }
     
-    
     # Converter o dicionário para lista de listas
     headers = list(response_data.keys())
     values = list(response_data.values())

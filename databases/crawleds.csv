@@ -735,4 +735,4 @@ num_if,num_else,num_switch,num_loop,num_break,num_Priority,num_binSearch,num_min
 7,1,0,1,0,0,0,0,0,0,0,1,0,3,2,13,linearithmic,efficient,write-an-efficient-method-to-check-if-a-number-is-multiple-of-3-2.java
 1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,3,constant,efficient,write-an-efficient-method-to-check-if-a-number-is-multiple-of-3-3.java
 1,1,0,2,0,0,0,0,0,0,0,0,2,3,2,9,logarithmic,efficient,write-an-efficient-method-to-check-if-a-number-is-multiple-of-3-4.java
-3,2,0,4,0,0,0,0,0,0,0,0,3,10,3,13,quadratic,inefficient,z-algorithm-linear-time-pattern-searching-algorithm-1.java
+3,2,0,4,0,0,0,0,0,0,0,0,3,10,3,13,linear,efficient,z-algorithm-linear-time-pattern-searching-algorithm-1.java

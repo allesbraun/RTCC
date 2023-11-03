@@ -7,18 +7,17 @@ from autogluon.tabular import TabularPredictor
 from databases import *
 
 
-def autogluon_classifier(code_csv):
-    custom_metrics = ['accuracy', 'precision', 'f1', 'recall']
-    verbosity=4 # More training log. TESTAR NO TREINAMENTO, AQUI NÃO É RELEVANTE
-    # eval_metrics = ['accuracy', 'precision', 'f1', 'recall'] TESTAR NO TREINAMENTO
-    test_data = code_csv
+def autogluon_classifier(test_data):
     predictor_class = TabularPredictor.load("deploy_class_classifier")
+    
     predictor_efficiency = TabularPredictor.load("deploy_efficiency_classifier")
+    
 
-    # predictor_class = TabularPredictor.load("AutogluonModels/ag-class_training", require_py_version_match=False)
     predictions_efficiency = predictor_efficiency.predict(test_data)
+    
     test_data['efficiency'] = predictions_efficiency[0]
     predictions_class = predictor_class.predict(test_data)
+    
     test_data['complexity_class'] = predictions_class[0]
     
     
@@ -31,8 +30,6 @@ def autogluon_classifier(code_csv):
     # predictor_efficiency.leaderboard(test_data, silent=False) #extra_info = true
     # predictor_class.leaderboard(test_data, silent=False) #extra_info = true
     
-    # predictor_efficiency.evaluate(test_data)
-    # predictor_class.evaluate(test_data)
     
     # results_efficiency = predictor_efficiency.fit_summary(show_plot=True) #descomentar 
     # results_class = predictor_class.fit_summary(show_plot=True) # descomentar
