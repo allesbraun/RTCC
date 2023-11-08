@@ -11,18 +11,18 @@ warnings.filterwarnings("ignore")
 
 
 
-def autogluon_classifier(test_data):
-    predictor_class = TabularPredictor.load("optimize_medium_class")
+def autogluon_classifier(code):
+    predictor_class = TabularPredictor.load("AutogluonModels/optimize_medium_class")
     
-    predictor_efficiency = TabularPredictor.load("optimize_medium_efficiency")
+    predictor_efficiency = TabularPredictor.load("AutogluonModels/optimize_medium_efficiency")
     
 
-    predictions_efficiency = predictor_efficiency.predict(test_data)
+    predictions_efficiency = predictor_efficiency.predict(code)
     
-    test_data['efficiency'] = predictions_efficiency[0]
-    predictions_class = predictor_class.predict(test_data)
+    code['efficiency'] = predictions_efficiency[0]
+    predictions_class = predictor_class.predict(code)
     
-    test_data['complexity_class'] = predictions_class[0]
+    code['complexity_class'] = predictions_class[0]
     
     
     
@@ -39,7 +39,7 @@ def autogluon_classifier(test_data):
     # results_class = predictor_class.fit_summary(show_plot=True) # descomentar
     
     
-    csv_file = str(test_data['filename'])
+    csv_file = str(code['filename'])
     csv_file = csv_file.replace('.java', '.csv')
     # test_data.to_csv(csv_file, index=False)
     
@@ -54,7 +54,7 @@ def autogluon_classifier(test_data):
     csv_file_path = os.path.join(folder_name, csv_file)
 
     # Salva o DataFrame em um arquivo CSV dentro da pasta
-    test_data.to_csv(csv_file_path, index=False)
+    code.to_csv(csv_file_path, index=False)
     
     efficiency_prediction = predictions_efficiency[0]
     class_prediction = predictions_class[0]
