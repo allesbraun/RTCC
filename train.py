@@ -2,10 +2,10 @@ import pandas as pd
 from autogluon.tabular import TabularPredictor
 
 # Caminho relativo para o arquivo CSV
-path_crawleds = 'databases/crawled_datasets.csv'    
-path_merged = 'databases/merged_datasets.csv'
+path_crawleds = 'databases/crawleds.csv'    
+path_merged = 'databases/mergeds.csv'
 
-train_data = pd.read_csv(path_crawleds)
+train_data = pd.read_csv(path_merged)
 train_data_efficiency = train_data.drop(['complexity_class'], axis=1)
 train_data_class = train_data
 # train_data_both = train_data.drop(['complexity'], axis=1) 

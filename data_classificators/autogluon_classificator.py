@@ -1,16 +1,20 @@
 import json
 import os
+import warnings
 
 import pandas as pd
 from autogluon.tabular import TabularPredictor
 
 from databases import *
 
+warnings.filterwarnings("ignore")
+
+
 
 def autogluon_classifier(test_data):
-    predictor_class = TabularPredictor.load("deploy_class_classifier")
+    predictor_class = TabularPredictor.load("optimize_medium_class")
     
-    predictor_efficiency = TabularPredictor.load("deploy_efficiency_classifier")
+    predictor_efficiency = TabularPredictor.load("optimize_medium_efficiency")
     
 
     predictions_efficiency = predictor_efficiency.predict(test_data)
