@@ -12,9 +12,9 @@ warnings.filterwarnings("ignore")
 
 
 def autogluon_classifier(code):
-    predictor_class = TabularPredictor.load("optimize_medium_class")
+    predictor_class = TabularPredictor.load("AutogluonModels/deploy_class_classifier")
     
-    predictor_efficiency = TabularPredictor.load("optimize_medium_efficiency")
+    predictor_efficiency = TabularPredictor.load("AutogluonModels/deploy_efficiency_classifier")
     
 
     predictions_efficiency = predictor_efficiency.predict(code)
